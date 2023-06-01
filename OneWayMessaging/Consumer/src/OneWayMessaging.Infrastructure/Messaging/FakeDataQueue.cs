@@ -17,6 +17,8 @@ public sealed class FakeDataQueue : BaseQueueConsumer<FakeData>, IFakeDataQueue
     {
         if (string.IsNullOrWhiteSpace(QueueName))
             throw new ArgumentNullException(nameof(QueueName), "Queue name can not be null or empty.");
+        
+        GenerateChannel();
     }
 
     public new void Dispose()

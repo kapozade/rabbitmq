@@ -39,7 +39,7 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
         }
     }
 
-    public void GenerateChannel()
+    protected void GenerateChannel()
     {
         if (_channel is not { IsOpen: true })
         {
