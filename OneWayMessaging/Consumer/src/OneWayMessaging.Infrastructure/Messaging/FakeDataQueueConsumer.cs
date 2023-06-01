@@ -5,13 +5,13 @@ using OneWayMessaging.Core.Messaging.Settings;
 
 namespace Infrastructure.Messaging;
 
-public sealed class FakeDataQueue : BaseQueueConsumer<FakeData>, IFakeDataQueue
+public sealed class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDataQueueConsumer
 {
     protected override string QueueName => "q.direct.example";
 
-    public FakeDataQueue(
+    public FakeDataQueueConsumer(
         RabbitMqSettings rabbitMqSettings, 
-        ILogger<FakeDataQueue> logger)
+        ILogger<FakeDataQueueConsumer> logger)
             : base(rabbitMqSettings, logger)
     {
         if (string.IsNullOrWhiteSpace(QueueName))

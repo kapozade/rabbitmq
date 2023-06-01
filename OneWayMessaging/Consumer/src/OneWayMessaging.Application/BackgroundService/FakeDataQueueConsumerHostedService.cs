@@ -5,14 +5,14 @@ namespace OneWayMessaging.Application.BackgroundService;
 
 public sealed class FakeDataQueueConsumerHostedService : IHostedService
 {
-    private readonly IFakeDataQueue _fakeDataQueue;
+    private readonly IFakeDataQueueConsumer _fakeDataQueueConsumer;
 
     public FakeDataQueueConsumerHostedService(
-        IFakeDataQueue fakeDataQueue
+        IFakeDataQueueConsumer fakeDataQueueConsumer
     )
     {
-        _fakeDataQueue = fakeDataQueue;
-        _fakeDataQueue.Subscribe(example =>
+        _fakeDataQueueConsumer = fakeDataQueueConsumer;
+        _fakeDataQueueConsumer.Subscribe(example =>
         {
             Console.WriteLine(example.ToString());
         });
@@ -25,7 +25,7 @@ public sealed class FakeDataQueueConsumerHostedService : IHostedService
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        _fakeDataQueue.Dispose();
+        _fakeDataQueueConsumer.Dispose();
         return Task.CompletedTask;
     }
 }
