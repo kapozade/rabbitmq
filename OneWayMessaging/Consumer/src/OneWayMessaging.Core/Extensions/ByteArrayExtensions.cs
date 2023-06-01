@@ -7,7 +7,7 @@ public static class ByteArrayExtensions
 {
     public static T ToObject<T>(this byte[] exampleAsBytes)
     {
-        var data = Encoding.UTF8.GetString(exampleAsBytes) ?? string.Empty;
+        var data = Encoding.UTF8.GetString(exampleAsBytes);
         return JsonSerializer.Deserialize<T>(data)
             ?? throw new Exception("Deserialization issue!");
     }
