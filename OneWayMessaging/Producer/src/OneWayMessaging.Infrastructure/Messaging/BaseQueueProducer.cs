@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using OneWayMessaging.Core.Extensions;
 using OneWayMessaging.Core.Messaging;
 using OneWayMessaging.Core.Messaging.Settings;
+using Polly;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Exceptions;
 
 namespace OneWayMessaging.Infrastructure.Messaging;
 
@@ -58,17 +60,30 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
 
     public void Publish(T obj)
     {
-        if (_channel == null || !_channel.IsOpen)
+        if (_channel == null)
             throw new UnreachableException("Channel not initialized.");
 
-        _channel.BasicPublish(
-            exchange: ExchangeName,
-            routingKey: QueueName,
-            body: obj.ToBytes()
+        var policy = Policy.Handle<OperationInterruptedException>()
+            .WaitAndRetry(3, 
+                retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), 
+                onRetry: (ex, retryCount, context) =>
+            {
+                {
+                    _logger.LogInformation("Retrying operation");
+                }
+            });
+
+        policy.Execute(() =>
+        {
+            _channel.BasicPublish(
+                exchange: ExchangeName,
+                routingKey: QueueName,
+                body: obj.ToBytes()
             );
 
-        _channel.ConfirmSelect();
-        _channel.WaitForConfirmsOrDie(timeout: TimeSpan.FromSeconds(5));
+            _channel.ConfirmSelect();
+            _channel.WaitForConfirmsOrDie(timeout: TimeSpan.FromSeconds(5));
+        });
     }
 
     public void Dispose()
