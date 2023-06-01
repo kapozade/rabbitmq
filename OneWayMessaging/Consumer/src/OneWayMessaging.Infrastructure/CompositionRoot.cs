@@ -1,8 +1,10 @@
-using Infrastructure.BackgroundServices;
+using System.Diagnostics;
 using Infrastructure.Messaging;
-using Infrastructure.Messaging.Core.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OneWayMessaging.Application.BackgroundService;
+using OneWayMessaging.Core.Messaging;
+using OneWayMessaging.Core.Messaging.Settings;
 
 namespace Infrastructure;
 
@@ -12,7 +14,7 @@ public static class CompositionRoot
         IConfiguration configuration)
     {
         var rabbitMqSettings = configuration.GetSection("RabbitMqSettings").Get<RabbitMqSettings>()
-                               ?? throw new Exception("RabbitMqSettings is not configured properly!");
+                               ?? throw new UnreachableException("RabbitMqSettings is not configured properly!");
         serviceCollection.AddSingleton(rabbitMqSettings);
 
         serviceCollection.AddSingleton<IFakeDataQueue, FakeDataQueue>();

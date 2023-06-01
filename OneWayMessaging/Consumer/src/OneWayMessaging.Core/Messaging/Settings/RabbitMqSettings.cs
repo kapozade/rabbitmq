@@ -1,4 +1,4 @@
-namespace Infrastructure.Messaging.Core.Settings;
+namespace OneWayMessaging.Core.Messaging.Settings;
 
 public record RabbitMqSettings
 {

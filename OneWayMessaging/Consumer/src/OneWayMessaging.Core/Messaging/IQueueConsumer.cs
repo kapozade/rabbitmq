@@ -1,4 +1,4 @@
-namespace Infrastructure.Messaging.Core;
+namespace OneWayMessaging.Core.Messaging;
 
 public interface IQueueConsumer<T> : IDisposable
 {

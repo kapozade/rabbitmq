@@ -1,8 +1,7 @@
-using Infrastructure.BackgroundServices;
-using Infrastructure.Messaging.Core;
-using Infrastructure.Messaging.Core.Settings;
 using Microsoft.Extensions.Logging;
 using OneWayMessaging.Core.FakeData;
+using OneWayMessaging.Core.Messaging;
+using OneWayMessaging.Core.Messaging.Settings;
 
 namespace Infrastructure.Messaging;
 
@@ -12,7 +11,7 @@ public sealed class FakeDataQueue : BaseQueueConsumer<FakeData>, IFakeDataQueue
 
     public FakeDataQueue(
         RabbitMqSettings rabbitMqSettings, 
-        ILogger<FakeDataQueueConsumerHostedService> logger)
+        ILogger<FakeDataQueue> logger)
             : base(rabbitMqSettings, logger)
     {
         if (string.IsNullOrWhiteSpace(QueueName))
