@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Hosting;
-using OneWayMessaging.Core.Messaging;
+using Direct.Core.Messaging;
 
-namespace OneWayMessaging.Application.BackgroundService;
+namespace Direct.Application.BackgroundService;
 
 public sealed class FakeDataQueueConsumerHostedService : IHostedService
 {

@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
-using OneWayMessaging.Core.Extensions;
-using OneWayMessaging.Core.Messaging;
-using OneWayMessaging.Core.Messaging.Settings;
+using Direct.Core.Extensions;
+using Direct.Core.Messaging;
+using Direct.Core.Messaging.Settings;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace Infrastructure.Messaging;
+namespace Direct.Infrastructure.Messaging;
 
 public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
 {

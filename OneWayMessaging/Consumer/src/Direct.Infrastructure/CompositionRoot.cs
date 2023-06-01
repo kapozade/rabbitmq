@@ -1,12 +1,12 @@
 using System.Diagnostics;
-using Infrastructure.Messaging;
+using Direct.Infrastructure.Messaging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OneWayMessaging.Application.BackgroundService;
-using OneWayMessaging.Core.Messaging;
-using OneWayMessaging.Core.Messaging.Settings;
+using Direct.Application.BackgroundService;
+using Direct.Core.Messaging;
+using Direct.Core.Messaging.Settings;
 
-namespace Infrastructure;
+namespace Direct.Infrastructure;
 
 public static class CompositionRoot
 {

@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OneWayMessaging.Core\OneWayMessaging.Core.csproj" />
+      <ProjectReference Include="..\Direct.Core\Direct.Core.csproj" />
     </ItemGroup>
 
 </Project>

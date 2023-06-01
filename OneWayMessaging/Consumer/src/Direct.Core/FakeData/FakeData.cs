@@ -1,4 +1,4 @@
-namespace OneWayMessaging.Core.FakeData;
+namespace Direct.Core.FakeData;
 
 public sealed record FakeData
 {

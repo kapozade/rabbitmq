@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Logging;
-using OneWayMessaging.Core.FakeData;
-using OneWayMessaging.Core.Messaging;
-using OneWayMessaging.Core.Messaging.Settings;
+using Direct.Core.FakeData;
+using Direct.Core.Messaging;
+using Direct.Core.Messaging.Settings;
 
-namespace Infrastructure.Messaging;
+namespace Direct.Infrastructure.Messaging;
 
 public sealed class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDataQueueConsumer
 {
