@@ -1,4 +1,4 @@
-namespace OneWayMessaging.Core.Messaging;
+namespace Direct.Core.Messaging;
 
 public interface IQueueProducer<T> : IDisposable
 {

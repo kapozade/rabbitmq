@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using OneWayMessaging.Infrastructure;
+using Direct.Infrastructure;
 
 var hostBuilder = CreateDefaultBuilder();
 var host = hostBuilder.Build();

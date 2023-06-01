@@ -1,14 +1,14 @@
 using System.Collections.Immutable;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using OneWayMessaging.Core.Extensions;
-using OneWayMessaging.Core.Messaging;
-using OneWayMessaging.Core.Messaging.Settings;
+using Direct.Core.Extensions;
+using Direct.Core.Messaging;
+using Direct.Core.Messaging.Settings;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
 
-namespace OneWayMessaging.Infrastructure.Messaging;
+namespace Direct.Infrastructure.Messaging;
 
 public abstract class BaseQueueProducer<T> : IQueueProducer<T>
 {

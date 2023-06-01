@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OneWayMessaging.Core.FakeData;
-using OneWayMessaging.Core.Messaging;
+using Direct.Core.FakeData;
+using Direct.Core.Messaging;
 
-namespace OneWayMessaging.Application.BackgroundService;
+namespace Direct.Application.BackgroundService;
 
 public sealed class FakeDataProducerHostedService : IHostedService
 {

@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5FD9F0CF-DB2E-4652-A2EE-1EF756F3134A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneWayMessaging.Console", "src\OneWayMessaging.Console\OneWayMessaging.Console.csproj", "{5261C5AD-58A5-4B04-AD70-B0F47BA65221}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct.Console", "src\Direct.Console\Direct.Console.csproj", "{5261C5AD-58A5-4B04-AD70-B0F47BA65221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneWayMessaging.Infrastructure", "src\OneWayMessaging.Infrastructure\OneWayMessaging.Infrastructure.csproj", "{70AD224B-3E84-40C6-B81B-366A417E3927}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct.Infrastructure", "src\Direct.Infrastructure\Direct.Infrastructure.csproj", "{70AD224B-3E84-40C6-B81B-366A417E3927}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneWayMessaging.Application", "src\OneWayMessaging.Application\OneWayMessaging.Application.csproj", "{B12D1689-17DD-4AD7-8CC9-FA9EF27112BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct.Application", "src\Direct.Application\Direct.Application.csproj", "{B12D1689-17DD-4AD7-8CC9-FA9EF27112BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneWayMessaging.Core", "src\OneWayMessaging.Core\OneWayMessaging.Core.csproj", "{0A7469BD-6EEE-411D-9AB3-2FF0E7BAE700}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct.Core", "src\Direct.Core\Direct.Core.csproj", "{0A7469BD-6EEE-411D-9AB3-2FF0E7BAE700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

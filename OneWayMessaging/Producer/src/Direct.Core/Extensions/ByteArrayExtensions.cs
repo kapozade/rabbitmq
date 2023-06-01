@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.Json;
 
-namespace OneWayMessaging.Core.Extensions;
+namespace Direct.Core.Extensions;
 
 public static class ByteArrayExtensions
 {
