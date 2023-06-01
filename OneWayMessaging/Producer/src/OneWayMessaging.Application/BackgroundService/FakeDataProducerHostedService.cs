@@ -35,12 +35,13 @@ public sealed class FakeDataProducerHostedService : IHostedService
                 };
             
                 _fakeDataQueueProducer.Publish(fakeData);
-                await Task.Delay(2000, cancellationToken);
             }
             catch (Exception ex)
             {
                 _logger.LogError("Exception occurred. Message: {Message}", ex.Message);
             }
+            
+            await Task.Delay(2000, cancellationToken);
         }
     }
 
