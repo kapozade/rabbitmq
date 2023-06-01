@@ -12,6 +12,7 @@ public sealed class FakeDataQueueConsumerHostedService : IHostedService
     )
     {
         _fakeDataQueue = fakeDataQueue;
+        _fakeDataQueue.GenerateChannel();
         _fakeDataQueue.Subscribe(example =>
         {
             Console.WriteLine(example.ToString());

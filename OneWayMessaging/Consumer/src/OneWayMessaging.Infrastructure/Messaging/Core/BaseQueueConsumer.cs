@@ -37,7 +37,10 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
                 return connectionFactory.CreateConnection();
             });
         }
+    }
 
+    public void GenerateChannel()
+    {
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
@@ -47,8 +50,7 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
                 exclusive: false,
                 autoDelete: false,
                 arguments: ImmutableDictionary<string, object>.Empty);
-        }
-    }
+        }    }
 
     public void Subscribe(Action<T> callBack)
     {
