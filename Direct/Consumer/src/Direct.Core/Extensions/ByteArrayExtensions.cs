@@ -5,9 +5,9 @@ namespace Direct.Core.Extensions;
 
 public static class ByteArrayExtensions
 {
-    public static T ToObject<T>(this byte[] exampleAsBytes)
+    public static T ToObject<T>(this byte[] bytes)
     {
-        var data = Encoding.UTF8.GetString(exampleAsBytes);
+        var data = Encoding.UTF8.GetString(bytes);
         return JsonSerializer.Deserialize<T>(data)
             ?? throw new Exception("Deserialization issue!");
     }
