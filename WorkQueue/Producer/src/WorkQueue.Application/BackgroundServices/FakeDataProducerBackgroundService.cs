@@ -32,6 +32,7 @@ public class FakeDataProducerBackgroundService : IHostedService
                     Field3 = 1.23m,
                     Field4 = true
                 });
+                _logger.LogInformation("Message sent at: {Date}", DateTime.Now.ToString("O"));
             }
             catch (Exception ex)
             {

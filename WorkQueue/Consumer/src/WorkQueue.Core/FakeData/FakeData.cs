@@ -9,6 +9,6 @@ public sealed record FakeData
 
     public override string ToString()
     {
-        return $"Field1: {Field1},Field2: {Field2},Field3: {Field3},Field4: {Field4},";
+        return $"Field1: {Field1},Field2: {Field2},Field3: {Field3},Field4: {Field4},{DateTime.Now:O}";
     }
 }
