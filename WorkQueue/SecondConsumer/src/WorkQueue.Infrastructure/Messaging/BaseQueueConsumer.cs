@@ -46,7 +46,9 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
-
+            // Round Robin dispatching is used by default
+            
+            // Dispatch messages fairly all around the channels
             _channel.BasicQos(
                 prefetchSize: 0,
                 prefetchCount: 1,

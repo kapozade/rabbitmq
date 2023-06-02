@@ -3,18 +3,18 @@ using WorkQueue.Core.Messaging;
 
 namespace WorkQueue.Application.BackgroundServices;
 
-public class FakeDataConsumerBackgroundService : IHostedService
+public class SecondaryFakeDataConsumerBackgroundService : IHostedService
 {
     private readonly IFakeDataQueueConsumer _fakeDataQueueConsumer;
 
-    public FakeDataConsumerBackgroundService(
-            IFakeDataQueueConsumer fakeDataQueueConsumer
-        )
+    public SecondaryFakeDataConsumerBackgroundService(
+        IFakeDataQueueConsumer fakeDataQueueConsumer
+    )
     {
         _fakeDataQueueConsumer = fakeDataQueueConsumer;
         _fakeDataQueueConsumer.Subscribe(fakeData =>
         {
-            Console.WriteLine(fakeData.ToString());
+            Console.WriteLine("Secondary: " + fakeData);
         });
     }
     
@@ -26,6 +26,5 @@ public class FakeDataConsumerBackgroundService : IHostedService
     public Task StopAsync(CancellationToken cancellationToken)
     {
         _fakeDataQueueConsumer.Dispose();
-        return Task.CompletedTask;
-    }
+        return Task.CompletedTask;    }
 }
