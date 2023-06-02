@@ -18,6 +18,8 @@ public static class CompositionRoot
 
         serviceCollection.AddSingleton(rabbitMqSettings);
         serviceCollection.AddSingleton<IFakeDataQueueConsumer, FakeDataQueueConsumer>();
+        serviceCollection.AddSingleton<IYetAnotherQueueConsumer, YetAnotherQueueConsumer>();
         serviceCollection.AddHostedService<FakeDataConsumerBackgroundService>();
+        serviceCollection.AddHostedService<YetAnotherQueueConsumerBackgroundService>();
     }
 }

@@ -14,7 +14,7 @@ public class FakeDataConsumerBackgroundService : IHostedService
         _fakeDataQueueConsumer = fakeDataQueueConsumer;
         _fakeDataQueueConsumer.Subscribe(data =>
         {
-            Console.WriteLine(data.ToString());
+            Console.WriteLine($"FakeDataConsumer: {data}");
         });
     }
     

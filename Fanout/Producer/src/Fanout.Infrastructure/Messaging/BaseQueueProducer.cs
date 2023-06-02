@@ -15,7 +15,6 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
     private IModel? _channel;
     private readonly ILogger _logger;
 
-    protected virtual string QueueName => string.Empty;
     protected virtual string ExchangeName => string.Empty;
     
     protected BaseQueueProducer(
@@ -61,7 +60,7 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
         {
             _channel.BasicPublish(
                     exchange: ExchangeName,
-                    routingKey: QueueName,
+                    routingKey: string.Empty,
                     body: obj.ToBytes()
                 );
             
@@ -88,9 +87,6 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
 
     protected void GenerateChannel()
     {
-        if (string.IsNullOrWhiteSpace(QueueName))
-            throw new ArgumentNullException(nameof(QueueName), "QueueName can not be null or empty.");
-        
         if (string.IsNullOrWhiteSpace(ExchangeName))
             throw new ArgumentNullException(nameof(ExchangeName), "ExchangeName can not be null or empty.");
         
@@ -104,18 +100,6 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
                 durable: true,
                 autoDelete: false,
                 arguments: ImmutableDictionary<string, object>.Empty);
-
-            _channel.QueueDeclare(
-                queue: QueueName,
-                durable: true,
-                exclusive: false,
-                autoDelete: false,
-                arguments: ImmutableDictionary<string, object>.Empty);
-            
-            _channel.QueueBind(
-                queue: QueueName,
-                exchange: ExchangeName,
-                routingKey: string.Empty);
         }
     }
 }
