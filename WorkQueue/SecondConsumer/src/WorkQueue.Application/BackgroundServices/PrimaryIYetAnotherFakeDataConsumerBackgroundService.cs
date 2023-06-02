@@ -3,18 +3,18 @@ using WorkQueue.Core.Messaging.Settings;
 
 namespace WorkQueue.Application.BackgroundServices;
 
-public class YetAnotherFakeDataConsumerBackgroundService : IHostedService
+public class PrimaryIYetAnotherFakeDataConsumerBackgroundService : IHostedService
 {
     private readonly IYetAnotherFakeDataConsumer _yetAnotherFakeDataConsumer;
 
-    public YetAnotherFakeDataConsumerBackgroundService(
+    public PrimaryIYetAnotherFakeDataConsumerBackgroundService(
         IYetAnotherFakeDataConsumer yetAnotherFakeDataConsumer
         )
     {
         _yetAnotherFakeDataConsumer = yetAnotherFakeDataConsumer;
         _yetAnotherFakeDataConsumer.Subscribe(data =>
         {
-            Console.WriteLine("Yet Another: " + data);
+            Console.WriteLine("Yet Another Fake Data Consumer: " + data);
         });
     }
     
