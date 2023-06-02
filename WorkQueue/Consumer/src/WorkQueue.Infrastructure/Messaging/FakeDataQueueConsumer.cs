@@ -16,9 +16,6 @@ public sealed class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDa
         ) 
         : base(rabbitMqSettings, logger)
     {
-        if (string.IsNullOrWhiteSpace(QueueName))
-            throw new ArgumentNullException(nameof(QueueName), "Queue name can not be null or empty.");
-
         GenerateChannel();
     }
 

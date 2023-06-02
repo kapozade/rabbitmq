@@ -46,6 +46,9 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
     
     protected void GenerateChannel()
     {
+        if (string.IsNullOrWhiteSpace(QueueName))
+            throw new ArgumentNullException(nameof(QueueName), "Queue name can not be null or empty.");
+
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
