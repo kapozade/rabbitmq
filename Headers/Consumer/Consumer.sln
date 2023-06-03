@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headers.Console", "src\Head
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headers.Infrastructure", "Headers.Infrastructure\Headers.Infrastructure.csproj", "{C2F9254A-568B-44E9-B320-CC61C6911501}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Headers.Core", "Headers.Core\Headers.Core.csproj", "{42D9CD18-93E9-43AF-B812-DE972228B591}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{C2F9254A-568B-44E9-B320-CC61C6911501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2F9254A-568B-44E9-B320-CC61C6911501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2F9254A-568B-44E9-B320-CC61C6911501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D9CD18-93E9-43AF-B812-DE972228B591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D9CD18-93E9-43AF-B812-DE972228B591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D9CD18-93E9-43AF-B812-DE972228B591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D9CD18-93E9-43AF-B812-DE972228B591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5FC1D2B1-7533-4569-AE45-097780C52F44} = {D138738C-4FDF-4F14-98DA-9CE6DD5F0DF6}
