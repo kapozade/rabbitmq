@@ -9,7 +9,7 @@ using Topic.Core.Messaging.Settings;
 
 namespace Topic.Infrastructure.Messaging;
 
-public abstract class BaseQueueConsumer<T> : IConsumerQueue<T>
+public abstract class BaseConsumerQueue<T> : IConsumerQueue<T>
 {
     private Lazy<IConnection>? _connection;
     private IModel? _channel;
@@ -20,7 +20,7 @@ public abstract class BaseQueueConsumer<T> : IConsumerQueue<T>
     protected virtual string RoutingKey => string.Empty;
     protected virtual bool AutoAck => false;
     
-    protected BaseQueueConsumer(
+    protected BaseConsumerQueue(
         RabbitMqSettings settings,
         ILogger logger
         )
@@ -55,7 +55,10 @@ public abstract class BaseQueueConsumer<T> : IConsumerQueue<T>
         if (string.IsNullOrWhiteSpace(ExchangeName))
             throw new ArgumentNullException(nameof(ExchangeName), "ExchangeName can not be null or empty");
 
-        if (_channel == null || !_channel.IsOpen)
+        if(string.IsNullOrWhiteSpace(RoutingKey))
+            throw new ArgumentNullException(nameof(RoutingKey), "RoutingKey can not be null or empty");
+        
+        if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
 
