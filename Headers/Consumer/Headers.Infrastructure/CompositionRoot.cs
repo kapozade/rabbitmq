@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Headers.Application.BackgroundServices;
 using Headers.Core.Messaging;
 using Headers.Core.Messaging.Settings;
 using Headers.Infrastructure.Messaging;
@@ -18,5 +19,8 @@ public static class CompositionRoot
 
         serviceCollection.AddSingleton<IHeader1ConsumerQueue, Header1ConsumerQueue>();
         serviceCollection.AddSingleton<IHeader2ConsumerQueue, Header2ConsumerQueue>();
+
+        serviceCollection.AddHostedService<Header1ConsumerBackgroundService>();
+        serviceCollection.AddHostedService<Header2ConsumerBackgroundService>();
     }
 }
