@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Topic.Application;
 using Topic.Core.Messaging;
 using Topic.Core.Messaging.Settings;
 using Topic.Infrastructure.Messaging;
@@ -19,5 +20,9 @@ public static class CompositionRoot
         serviceCollection.AddSingleton<ITopic1DataProducer, Topic1DataProducer>();
         serviceCollection.AddSingleton<ITopic2DataProducer, Topic2DataProducer>();
         serviceCollection.AddSingleton<ITopic1SubCategoryDataProducer, Topic1SubCategoryDataProducer>();
+
+        serviceCollection.AddHostedService<Topic1DataProducerBackgroundService>();
+        serviceCollection.AddHostedService<Topic2DataProducerBackgroundService>();
+        serviceCollection.AddHostedService<Topic1SubCategoryDataProducerBackgroundService>();
     }
 }
