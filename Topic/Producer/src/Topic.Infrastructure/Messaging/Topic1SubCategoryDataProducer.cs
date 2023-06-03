@@ -12,7 +12,7 @@ public class Topic1SubCategoryDataProducer : BaseProducerQueue<FakeData>, ITopic
 
     public Topic1SubCategoryDataProducer(
             RabbitMqSettings settings, 
-            ILogger logger
+            ILogger<Topic1SubCategoryDataProducer> logger
         ) : base(settings, logger)
     {
         GenerateChannel();

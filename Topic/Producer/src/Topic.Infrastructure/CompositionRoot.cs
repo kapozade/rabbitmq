@@ -21,8 +21,6 @@ public static class CompositionRoot
         serviceCollection.AddSingleton<ITopic2DataProducer, Topic2DataProducer>();
         serviceCollection.AddSingleton<ITopic1SubCategoryDataProducer, Topic1SubCategoryDataProducer>();
 
-        serviceCollection.AddHostedService<Topic1DataProducerBackgroundService>();
-        serviceCollection.AddHostedService<Topic2DataProducerBackgroundService>();
-        serviceCollection.AddHostedService<Topic1SubCategoryDataProducerBackgroundService>();
+        serviceCollection.AddHostedService<DataProducersBackgroundService>();
     }
 }

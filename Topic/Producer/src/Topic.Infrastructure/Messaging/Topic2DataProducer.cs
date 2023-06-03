@@ -12,7 +12,7 @@ public sealed class Topic2DataProducer : BaseProducerQueue<FakeData>, ITopic2Dat
 
     public Topic2DataProducer(
             RabbitMqSettings settings, 
-            ILogger logger
+            ILogger<Topic2DataProducer> logger
         ) : base(settings, logger)
     {
         GenerateChannel();
