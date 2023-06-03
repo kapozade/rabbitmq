@@ -5,15 +5,14 @@ using Topic.Core.Messaging.Settings;
 
 namespace Topic.Infrastructure.Messaging;
 
-public sealed class Topic1ConsumerQueue : BaseConsumerQueue<FakeData>, IFakeDataConsumerQueue
+public sealed class Topic2DataProducerQueue : BaseProducerQueue<FakeData>, ITopic2DataProducerQueue
 {
     protected override string ExchangeName => "ex.topic.example";
-    protected override string QueueName => "q.topic.example-1";
-    protected override string RoutingKey => "topic-1";
+    protected override string RoutingKey => "topic2.#";
 
-    public Topic1ConsumerQueue(
-        RabbitMqSettings settings, 
-        ILogger<Topic1ConsumerQueue> logger
+    public Topic2DataProducerQueue(
+            RabbitMqSettings settings, 
+            ILogger<Topic2DataProducerQueue> logger
         ) : base(settings, logger)
     {
         GenerateChannel();

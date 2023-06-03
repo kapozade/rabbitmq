@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Topic.Application.BackgroundServices;
 using Topic.Core.Messaging;
 using Topic.Core.Messaging.Settings;
@@ -15,10 +16,12 @@ public static class CompositionRoot
     {        
         var rabbitMqSettings = configuration.GetSection("RabbitMqSettings").Get<RabbitMqSettings>()
                                     ?? throw new UnreachableException("RabbitMqSettings is not configured properly.");
-
         serviceCollection.AddSingleton(rabbitMqSettings);
-        serviceCollection.AddSingleton<IFakeDataProducerQueue, Topic1ProducerQueue>();
+
+        serviceCollection.AddSingleton<ITopic1DataProducerQueue, Topic1DataProducerQueue>();
+        serviceCollection.AddSingleton<ITopic2DataProducerQueue, Topic2DataProducerQueue>();
 
         serviceCollection.AddHostedService<Topic1DataProducerBackgroundService>();
+        serviceCollection.AddHostedService<Topic2DataProducerBackgroundService>();
     }
 }

@@ -3,18 +3,18 @@ using Topic.Core.Messaging;
 
 namespace Topic.Application.BackgroundServices;
 
-public sealed class Topic1ConsumerQueueBackgroundService : IHostedService
+public sealed class Topic2DataConsumerBackgroundService : IHostedService
 {
-    private readonly IFakeDataConsumerQueue _fakeDataConsumerQueue;
+    private readonly ITopic2DataConsumerQueue _fakeDataConsumerQueue;
 
-    public Topic1ConsumerQueueBackgroundService(
-            IFakeDataConsumerQueue fakeDataConsumerQueue
+    public Topic2DataConsumerBackgroundService(
+            ITopic2DataConsumerQueue fakeDataConsumerQueue
         )
     {
         _fakeDataConsumerQueue = fakeDataConsumerQueue;
         _fakeDataConsumerQueue.Subscribe(data =>
         {
-            Console.WriteLine($"Topic-1: {data}");
+            Console.WriteLine($"Topic-2: {data}");
         });
     }
     

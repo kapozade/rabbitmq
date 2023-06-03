@@ -5,28 +5,28 @@ using Topic.Core.Messaging;
 
 namespace Topic.Application.BackgroundServices;
 
-public sealed class Topic1DataProducerBackgroundService : IHostedService
+public sealed class Topic2DataProducerBackgroundService : IHostedService
 {
-    private readonly ITopic1DataProducerQueue _topic1DataProducerQueue;
-    private readonly ILogger<Topic1DataProducerBackgroundService> _logger;
+    private readonly ITopic2DataProducerQueue _topic2DataProducerQueue;
+    private readonly ILogger<Topic2DataProducerBackgroundService> _logger;
 
-    public Topic1DataProducerBackgroundService(
-            ITopic1DataProducerQueue topic1DataProducerQueue,
-            ILogger<Topic1DataProducerBackgroundService> logger
+    public Topic2DataProducerBackgroundService(
+            ITopic2DataProducerQueue topic2DataProducerQueue,
+            ILogger<Topic2DataProducerBackgroundService> logger
             )
     {
-        _topic1DataProducerQueue = topic1DataProducerQueue;
+        _topic2DataProducerQueue = topic2DataProducerQueue;
         _logger = logger;
     }
     
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        Console.WriteLine("Topic 1 background service is starting");
+        Console.WriteLine("Topic 2 background service is starting");
         while (!cancellationToken.IsCancellationRequested)
         {
             try
             {
-                _topic1DataProducerQueue.Publish(new FakeData("topic-1", 1, 1.23m, true));
+                _topic2DataProducerQueue.Publish(new FakeData("topic-2", 2, 2.23m, false));
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ public sealed class Topic1DataProducerBackgroundService : IHostedService
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        _topic1DataProducerQueue.Dispose();
+        _topic2DataProducerQueue.Dispose();
         return Task.CompletedTask;
     }
 }
