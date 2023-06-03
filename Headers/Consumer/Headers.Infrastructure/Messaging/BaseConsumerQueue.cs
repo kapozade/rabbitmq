@@ -55,12 +55,16 @@ public abstract class BaseConsumerQueue<T>  : IConsumerQueue<T>
         if (string.IsNullOrWhiteSpace(Queue))
             throw new ArgumentNullException(nameof(Queue), "Exchange can not be null or empty");
 
-        if (Headers.Count < 1)
+        if (Headers.IsEmpty)
             throw new ArgumentNullException(nameof(Headers), "Headers can not be empty");
 
         if (!Headers.ContainsKey("x-match"))
             throw new ArgumentException("Headers should contain x-match definition");
 
+        if (Headers["x-match"].ToString()!.Equals("any")
+            && Headers["x-match"].ToString()!.Equals("all"))
+            throw new ArgumentException("Headers x-match value can be only 'any' or 'all'");
+        
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
