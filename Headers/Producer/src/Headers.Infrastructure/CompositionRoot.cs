@@ -18,8 +18,10 @@ public static class CompositionRoot
 
         serviceCollection.AddSingleton<IHeader1ProducerQueue, Header1ProducerQueue>();
         serviceCollection.AddSingleton<IHeader2ProducerQueue, Header2ProducerQueue>();
+        serviceCollection.AddSingleton<IHeader3ProducerQueue, Header3ProducerQueue>();
 
         serviceCollection.AddHostedService<Header1ProducerBackgroundService>();
         serviceCollection.AddHostedService<Header2ProducerBackgroundService>();
+        serviceCollection.AddHostedService<Header3ProducerBackgroundService>();
     }
 }

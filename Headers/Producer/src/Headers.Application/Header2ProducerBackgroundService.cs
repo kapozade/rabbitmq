@@ -25,7 +25,7 @@ public sealed class Header2ProducerBackgroundService : BackgroundService
         {
             try
             {
-                _producerQueue.Publish(new FakeData("Header 2", 1, 1.23m, true));
+                _producerQueue.Publish(new FakeData("CNN sports", 1, 1.23m, true));
             }
             catch (Exception e)
             {

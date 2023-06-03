@@ -14,7 +14,7 @@ public sealed class Header1ConsumerBackgroundService : IHostedService
         _header1ConsumerQueue = header1ConsumerQueue;
         _header1ConsumerQueue.Subscribe(data =>
         {
-            Console.WriteLine($"Any [BBC, sports]: {data}");
+            Console.WriteLine($"Any [BBC or sports]: {data}");
         });
     }
     

@@ -5,28 +5,27 @@ using Microsoft.Extensions.Logging;
 
 namespace Headers.Application;
 
-public sealed class Header1ProducerBackgroundService : BackgroundService
+public sealed class Header3ProducerBackgroundService : BackgroundService
 {
-    private readonly IHeader1ProducerQueue _producerQueue;
-    private readonly ILogger<Header1ProducerBackgroundService> _logger;
+    private readonly IHeader3ProducerQueue _producerQueue;
+    private readonly ILogger<Header3ProducerBackgroundService> _logger;
 
-    public Header1ProducerBackgroundService(
-            IHeader1ProducerQueue producerQueue,
-            ILogger<Header1ProducerBackgroundService> logger
-        )
+    public Header3ProducerBackgroundService(
+            IHeader3ProducerQueue producerQueue,
+            ILogger<Header3ProducerBackgroundService> logger
+            )
     {
         _producerQueue = producerQueue;
         _logger = logger;
     }
-
+    
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        Console.WriteLine("Header 1 BS starting");
         while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
-                _producerQueue.Publish(new FakeData("BBC sports", 1, 1.23m, true));
+                _producerQueue.Publish(new FakeData("BBC weather", 1, 1.23m, true));
             }
             catch (Exception e)
             {
@@ -34,6 +33,5 @@ public sealed class Header1ProducerBackgroundService : BackgroundService
             }
 
             await Task.Delay(10000, stoppingToken);
-        }    
-    }
+        }    }
 }
