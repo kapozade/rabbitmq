@@ -1,3 +1,7 @@
+using System.Diagnostics;
+using Headers.Core.Messaging;
+using Headers.Core.Messaging.Settings;
+using Headers.Infrastructure.Messaging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +11,13 @@ public static class CompositionRoot
 {
     public static void AddDependencies(IServiceCollection serviceCollection, IConfiguration configuration)
     {
+        var rabbitMqSettings = configuration.GetSection("RabbitMqSettings").Get<RabbitMqSettings>()
+                               ?? throw new UnreachableException("RabbitMqSettings is not configured properly.");
+        serviceCollection.AddSingleton(rabbitMqSettings);
+
+        serviceCollection.AddSingleton<IHeader1ProducerQueue, Header1ProducerQueue>();
+        serviceCollection.AddSingleton<IHeader2ProducerQueue, Header2ProducerQueue>();
+
         
     }
 }

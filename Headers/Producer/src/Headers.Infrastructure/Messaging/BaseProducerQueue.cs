@@ -55,13 +55,6 @@ public abstract class BaseProducerQueue<T> : IProducerQueue<T>
         if (Headers.IsEmpty)
             throw new ArgumentNullException(nameof(Headers), "Headers can not be empty");
 
-        if (!Headers.ContainsKey("x-match"))
-            throw new ArgumentException("Headers should contain 'x-match' key");
-        
-        if (Headers["x-match"].ToString()!.Equals("any")
-            && Headers["x-match"].ToString()!.Equals("all"))
-            throw new ArgumentException("Headers x-match value can be only 'any' or 'all'");
-
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
