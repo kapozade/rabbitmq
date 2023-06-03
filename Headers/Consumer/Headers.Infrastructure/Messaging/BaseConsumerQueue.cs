@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using Headers.Core.Extensions;
@@ -18,10 +19,10 @@ public abstract class BaseConsumerQueue<T>  : IConsumerQueue<T>
 
     protected virtual string Exchange => string.Empty;
     protected virtual string Queue => string.Empty;
-    protected virtual Dictionary<string, object> Headers => new Dictionary<string, object>();
+    protected virtual ConcurrentDictionary<string, object> Headers => new();
     protected virtual bool AutoAck => false;
 
-    public BaseConsumerQueue(
+    protected BaseConsumerQueue(
             RabbitMqSettings settings,
             ILogger logger
         )
@@ -56,7 +57,10 @@ public abstract class BaseConsumerQueue<T>  : IConsumerQueue<T>
 
         if (Headers.Count < 1)
             throw new ArgumentNullException(nameof(Headers), "Headers can not be empty");
-        
+
+        if (!Headers.ContainsKey("x-match"))
+            throw new ArgumentException("Headers should contain x-match definition");
+
         if (_channel is not { IsOpen: true })
         {
             _channel = _connection!.Value.CreateModel();
@@ -104,7 +108,14 @@ public abstract class BaseConsumerQueue<T>  : IConsumerQueue<T>
             {
                 _logger.LogError("Exception occured while processing message. Message: {Message}", ex.Message);
             }
+            
+            _channel.BasicAck(args.DeliveryTag, true);
         };
+
+        _channel.BasicConsume(
+            queue: Queue,
+            autoAck: AutoAck,
+            consumer);
     }
 
     public void Dispose()
