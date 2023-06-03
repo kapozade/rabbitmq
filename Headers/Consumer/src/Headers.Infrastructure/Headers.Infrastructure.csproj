@@ -16,7 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Headers.Core\Headers.Core.csproj" />
-      <ProjectReference Include="..\src\Headers.Application\Headers.Application.csproj" />
+      <ProjectReference Include="..\Headers.Application\Headers.Application.csproj" />
     </ItemGroup>
     
 </Project>
