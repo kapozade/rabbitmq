@@ -25,7 +25,7 @@ public sealed class Header1ConsumerQueue : BaseConsumerQueue<FakeData>, IHeader1
 
     public Header1ConsumerQueue(
         RabbitMqSettings settings, 
-        ILogger logger
+        ILogger<Header1ConsumerQueue> logger
         ) : base(settings, logger)
     {
         GenerateChannel();
