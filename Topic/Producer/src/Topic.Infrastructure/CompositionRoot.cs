@@ -1,7 +1,9 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Topic.Core.Messaging;
 using Topic.Core.Messaging.Settings;
+using Topic.Infrastructure.Messaging;
 
 namespace Topic.Infrastructure;
 
@@ -13,5 +15,9 @@ public static class CompositionRoot
                                ?? throw new UnreachableException("RabbitMqSettings is not configured properly");
 
         serviceCollection.AddSingleton(rabbitMqSettings);
+
+        serviceCollection.AddSingleton<ITopic1DataProducer, Topic1DataProducer>();
+        serviceCollection.AddSingleton<ITopic2DataProducer, Topic2DataProducer>();
+        serviceCollection.AddSingleton<ITopic1SubCategoryDataProducer, Topic1SubCategoryDataProducer>();
     }
 }
