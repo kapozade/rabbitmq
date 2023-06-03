@@ -17,7 +17,10 @@ public static class CompositionRoot
                                ?? throw new UnreachableException("RabbitMqSettings is not configured properly.");
         serviceCollection.AddSingleton(rabbitMqSettings);
 
-        serviceCollection.AddSingleton<IFakeDataConsumerQueue, Topic1ConsumerQueue>();
-        serviceCollection.AddHostedService<Topic1ConsumerQueueBackgroundService>();
+        serviceCollection.AddSingleton<ITopic1DataConsumerQueue, Topic1DataConsumerQueue>();
+        serviceCollection.AddSingleton<ITopic2DataConsumerQueue, Topic2DataConsumerQueue>();
+
+        serviceCollection.AddHostedService<Topic1DataConsumerBackgroundService>();
+        serviceCollection.AddHostedService<Topic2DataConsumerBackgroundService>();
     }
 }
