@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Headers.Application;
 
-public sealed class Header1ProducerBackgroundService : IHostedService
+public sealed class Header1ProducerBackgroundService : BackgroundService
 {
     private readonly IHeader1ProducerQueue _producerQueue;
     private readonly ILogger<Header1ProducerBackgroundService> _logger;
@@ -18,10 +18,11 @@ public sealed class Header1ProducerBackgroundService : IHostedService
         _producerQueue = producerQueue;
         _logger = logger;
     }
-    
-    public async Task StartAsync(CancellationToken cancellationToken)
+
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!cancellationToken.IsCancellationRequested)
+        Console.WriteLine("Header 1 BS starting");
+        while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
@@ -32,13 +33,7 @@ public sealed class Header1ProducerBackgroundService : IHostedService
                 _logger.LogError("Exception occured while publishing a message. Message: {Message}", e.Message);
             }
 
-            await Task.Delay(2000, cancellationToken);
-        }
-    }
-
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
-        _producerQueue.Dispose();
-        return Task.CompletedTask;
+            await Task.Delay(10000, stoppingToken);
+        }    
     }
 }
