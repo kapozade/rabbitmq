@@ -20,6 +20,7 @@ public sealed class Topic1DataConsumerBackgroundService : IHostedService
     
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        Console.WriteLine("Topic 1 Consumer is starting");
         return Task.CompletedTask;
     }
 

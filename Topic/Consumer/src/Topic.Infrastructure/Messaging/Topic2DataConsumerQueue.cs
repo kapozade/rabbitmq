@@ -9,7 +9,7 @@ public sealed class Topic2DataConsumerQueue : BaseConsumerQueue<FakeData>, ITopi
 {
     protected override string ExchangeName => "ex.topic.example";
     protected override string QueueName => "q.topic.example-2";
-    protected override string RoutingKey => "#.topic-2";
+    protected override string RoutingKey => "topic2.#";
 
     public Topic2DataConsumerQueue(
         RabbitMqSettings settings, 
