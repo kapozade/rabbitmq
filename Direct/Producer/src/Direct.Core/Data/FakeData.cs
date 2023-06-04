@@ -1,4 +1,4 @@
-namespace Direct.Core.FakeData;
+namespace Direct.Core.Data;
 
 public sealed record FakeData
 {
