@@ -1,5 +1,7 @@
+using WorkQueue.Core.Data;
+
 namespace WorkQueue.Core.Messaging;
 
-public interface IFakeDataProducer: IQueueProducer<FakeData.FakeData>
+public interface IFakeDataProducer: IQueueProducer<FakeData>
 {
 }
