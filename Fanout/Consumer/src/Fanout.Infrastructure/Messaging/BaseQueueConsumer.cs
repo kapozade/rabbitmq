@@ -5,6 +5,7 @@ using Fanout.Core.Messaging.Settings;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Diagnostics;
 
 namespace Fanout.Infrastructure.Messaging;
 
@@ -80,7 +81,7 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
     public void Subscribe(Action<T> callBack)
     {
         if (_channel is not { IsOpen: true })
-            throw new Exception("Channel is not initialized.");
+            throw new UnreachableException("Channel is not initialized.");
 
         var consumer = new EventingBasicConsumer(_channel);
         consumer.Received += (_, args) =>

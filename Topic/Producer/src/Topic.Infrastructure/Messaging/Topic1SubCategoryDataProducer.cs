@@ -5,7 +5,7 @@ using Topic.Core.Messaging.Settings;
 
 namespace Topic.Infrastructure.Messaging;
 
-public class Topic1SubCategoryDataProducer : BaseProducerQueue<FakeData>, ITopic1SubCategoryDataProducer
+public sealed class Topic1SubCategoryDataProducer : BaseProducerQueue<FakeData>, ITopic1SubCategoryDataProducer
 {
     protected override string Exchange => "ex.topic.example";
     protected override string Routing => "topic1.sub";

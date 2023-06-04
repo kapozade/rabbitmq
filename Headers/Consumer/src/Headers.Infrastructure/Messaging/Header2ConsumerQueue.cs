@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Headers.Infrastructure.Messaging;
 
-public class Header2ConsumerQueue : BaseConsumerQueue<FakeData>, IHeader2ConsumerQueue
+public sealed class Header2ConsumerQueue : BaseConsumerQueue<FakeData>, IHeader2ConsumerQueue
 {
     protected override string Exchange => "ex.headers.example";
     protected override string Queue => "q.headers.header2";

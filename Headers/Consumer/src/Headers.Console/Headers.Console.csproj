@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Headers.Infrastructure\Headers.Infrastructure.csproj" />
+    <ProjectReference Include="..\Headers.Infrastructure\Headers.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

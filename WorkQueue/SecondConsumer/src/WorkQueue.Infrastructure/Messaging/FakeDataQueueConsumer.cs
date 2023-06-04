@@ -5,7 +5,7 @@ using WorkQueue.Core.Messaging.Settings;
 
 namespace WorkQueue.Infrastructure.Messaging;
 
-public class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDataQueueConsumer
+public sealed class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDataQueueConsumer
 {
     protected override string QueueName => "q.work-queue.example";
     protected override bool AutoAck => false; // Message is acked after processed.
