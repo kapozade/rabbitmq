@@ -1,6 +1,6 @@
 # Direct (Nameless)
 
-![nameless flow](https://github.com/kapozade/rabbitmq/blob/main/nameless-flow.png?raw=true)
+![nameless flow](https://github.com/kapozade/rabbitmq/blob/main/assets/direct-flow.png)
 
 * It's a special exchange created by RabbitMQ.
 * It compares routing key with queue name.
