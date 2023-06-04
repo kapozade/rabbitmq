@@ -1,3 +1,4 @@
+using Fanout.Core.Exceptions;
 using System.Text;
 using System.Text.Json;
 
@@ -15,6 +16,6 @@ public static class ByteArrayExtensions
     {
         var data = Encoding.UTF8.GetString(bytes);
         return JsonSerializer.Deserialize<T>(data)
-               ?? throw new Exception("Deserialization issue");
+               ?? throw new DevelopmentException("Deserialization issue");
     }
 }

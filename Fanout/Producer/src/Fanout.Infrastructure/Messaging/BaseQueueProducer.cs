@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
+using System.Diagnostics;
 
 namespace Fanout.Infrastructure.Messaging;
 
@@ -45,7 +46,7 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
     public void Publish(T obj)
     {
         if (_channel == null)
-            throw new Exception("Channel unreachable");
+            throw new UnreachableException("Channel unreachable");
 
         var policy = Policy
             .Handle<OperationInterruptedException>()

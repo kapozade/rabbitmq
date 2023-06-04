@@ -1,0 +1,8 @@
+namespace Topic.Core.Exceptions;
+
+public sealed class DevelopmentException : Exception
+{
+    public DevelopmentException(string message) : base(message)
+    {
+    }
+}

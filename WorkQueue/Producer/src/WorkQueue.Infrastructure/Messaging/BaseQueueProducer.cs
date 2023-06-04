@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Exceptions;
+using System.Diagnostics;
 using WorkQueue.Core.Extensions;
 using WorkQueue.Core.Messaging;
 using WorkQueue.Core.Messaging.Settings;
@@ -64,7 +65,7 @@ public abstract class BaseQueueProducer<T> : IQueueProducer<T>
     public void Publish(T obj)
     {
         if (_channel == null)
-            throw new Exception("Channel unreachable");
+            throw new UnreachableException("Channel is not initialized.");
 
         var policy = Policy
             .Handle<OperationInterruptedException>()
