@@ -17,9 +17,4 @@ public sealed class FakeDataQueueConsumer : BaseQueueConsumer<FakeData>, IFakeDa
     {
         GenerateChannel();
     }
-
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }

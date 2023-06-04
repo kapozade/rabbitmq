@@ -18,9 +18,4 @@ public sealed class Topic1DataConsumerQueue : BaseConsumerQueue<FakeData>, ITopi
     {
         GenerateChannel();
     }
-
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }

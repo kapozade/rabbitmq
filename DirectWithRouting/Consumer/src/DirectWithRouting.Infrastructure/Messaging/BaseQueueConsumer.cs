@@ -106,7 +106,7 @@ public abstract class BaseQueueConsumer<T> : IQueueConsumer<T>
         }
     }
     
-    public void Dispose()
+    public virtual void Dispose()
     {
         _channel?.Close();
         _channel?.Dispose();

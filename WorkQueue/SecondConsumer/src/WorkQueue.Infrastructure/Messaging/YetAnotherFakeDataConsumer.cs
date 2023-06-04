@@ -16,9 +16,4 @@ public sealed class YetAnotherFakeDataConsumer : BaseQueueConsumer<FakeData>, IY
     {
         GenerateChannel();
     }
-
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }

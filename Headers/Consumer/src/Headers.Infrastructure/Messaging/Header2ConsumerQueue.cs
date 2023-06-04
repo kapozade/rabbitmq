@@ -30,9 +30,4 @@ public sealed class Header2ConsumerQueue : BaseConsumerQueue<FakeData>, IHeader2
     {
         GenerateChannel();
     }
-    
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }
