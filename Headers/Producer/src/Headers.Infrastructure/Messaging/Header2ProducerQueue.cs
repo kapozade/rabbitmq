@@ -29,9 +29,4 @@ public sealed class Header2ProducerQueue : BaseProducerQueue<FakeData>, IHeader2
     {
         GenerateChannel();
     }
-
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }

@@ -93,7 +93,7 @@ public abstract class BaseProducerQueue<T> : IProducerQueue<T>
         });
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         _channel?.Close();
         _channel?.Dispose();

@@ -17,9 +17,4 @@ public sealed class Topic2DataProducer : BaseProducerQueue<FakeData>, ITopic2Dat
     {
         GenerateChannel();
     }
-
-    public new void Dispose()
-    {
-        base.Dispose();
-    }
 }
