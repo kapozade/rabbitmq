@@ -1,4 +1,4 @@
-namespace WorkQueue.Core.FakeData;
+namespace WorkQueue.Core.Data;
 
 public sealed record FakeData
 {

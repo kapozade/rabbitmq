@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Hosting;
-using WorkQueue.Core.Messaging.Settings;
+using WorkQueue.Core.Messaging;
 
 namespace WorkQueue.Application.BackgroundServices;
 

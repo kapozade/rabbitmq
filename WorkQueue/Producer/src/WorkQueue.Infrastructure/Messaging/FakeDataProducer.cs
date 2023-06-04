@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Logging;
-using WorkQueue.Core.FakeData;
+using WorkQueue.Core.Data;
 using WorkQueue.Core.Messaging;
 using WorkQueue.Core.Messaging.Settings;
 

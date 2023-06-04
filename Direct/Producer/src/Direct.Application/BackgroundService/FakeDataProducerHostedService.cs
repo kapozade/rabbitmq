@@ -1,6 +1,6 @@
+using Direct.Core.Data;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Direct.Core.FakeData;
 using Direct.Core.Messaging;
 
 namespace Direct.Application.BackgroundService;

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WorkQueue.Core.FakeData;
+using WorkQueue.Core.Data;
 using WorkQueue.Core.Messaging;
 
 namespace WorkerQueue.Application.BackgroundServices;
